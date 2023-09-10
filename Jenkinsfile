@@ -13,8 +13,10 @@ pipeline {
             }
         }
         stage ('Static analysis') {
-            withSonarQubeEnv() {
-                sh './gradlew sonar'
+            steps {
+                withSonarQubeEnv() {
+                    sh './gradlew sonar'
+                }
             }
         }
         stage ('Deploy') {
