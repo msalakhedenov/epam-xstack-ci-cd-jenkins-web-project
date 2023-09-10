@@ -14,7 +14,8 @@ pipeline {
         }
         stage ('Deploy') {
             steps {
-                echo 'Deploying...'
+                sh './gradlew bootWar --exclude-task test'
+                sh 'ls -la build/libs'
             }
         }
     }
