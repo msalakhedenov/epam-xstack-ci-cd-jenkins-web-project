@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:goals
+    username: sa
+    password: sa
