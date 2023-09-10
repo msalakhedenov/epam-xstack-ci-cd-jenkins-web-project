@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-               echo 'Building...'
+               sh './gradlew bootWar --exclude-task test'
             }
         }
         stage ('Test') {
             steps {
-                echo 'Testing...'
+                sh './gradlew test'
             }
         }
         stage ('Deploy') {
