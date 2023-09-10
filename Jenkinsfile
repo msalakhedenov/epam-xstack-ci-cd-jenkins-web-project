@@ -12,6 +12,11 @@ pipeline {
                 sh './gradlew test'
             }
         }
+        stage ('Static analysis') {
+            withSonarQubeEnv() {
+                sh './gradlew sonar'
+            }
+        }
         stage ('Deploy') {
             steps {
                 withCredentials([file(credentialsId: 'EPAM_XSTACK_CI_CD_JENKINS_DB_PROPERTIES', variable: 'db_properties')]) {

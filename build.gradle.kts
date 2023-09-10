@@ -3,6 +3,7 @@ plugins {
   id("war")
   id("org.springframework.boot") version "3.1.3"
   id("io.spring.dependency-management") version "1.1.3"
+  id("org.sonarqube") version "3.5.0.2730"
 }
 
 group = "com.sm"
@@ -10,6 +11,12 @@ version = "1.0-SNAPSHOT"
 
 java {
   sourceCompatibility = JavaVersion.VERSION_17
+}
+
+sonar {
+  properties {
+    property("sonar.projectKey", "EPAM-XStack-CI-CD-with-Jenkins")
+  }
 }
 
 repositories {
