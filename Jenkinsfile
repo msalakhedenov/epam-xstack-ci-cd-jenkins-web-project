@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('Local') {
                     withGradle {
-                        sh './gradlew sonar'
+                        sh 'gradle sonarqube'
                     }
                 }
             }
