@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class GoalSetterServiceImplIntegrationTest {
+class GoalSetterServiceImplIntegrationTest {
 
   @Autowired
   private GoalSetterService goalSetterService;
@@ -21,7 +21,7 @@ public class GoalSetterServiceImplIntegrationTest {
   private GoalRepository goalRepository;
 
   @Test
-  public void givenGoalSetterService_whenSaveAndRetrieveGoal_thenOk() {
+  void givenGoalSetterService_whenSaveAndRetrieveGoal_thenOk() {
     Goal goalToSave = new Goal();
     goalToSave.setTitle("Test");
 
@@ -29,8 +29,8 @@ public class GoalSetterServiceImplIntegrationTest {
 
     List<Goal> goals = goalRepository.findAll();
 
-    assertEquals(goals.size(), 1);
-    assertEquals(goals.get(0).getTitle(), goalToSave.getTitle());
+    assertEquals(1, goals.size());
+    assertEquals(goalToSave.getTitle(), goals.get(0).getTitle());
   }
 
 }

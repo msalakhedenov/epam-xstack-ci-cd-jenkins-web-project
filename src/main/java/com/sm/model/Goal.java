@@ -21,4 +21,10 @@ public class Goal {
 
   private String title;
 
+  public static Goal withTitle(String title) {
+    Goal goal = new Goal();
+    goal.setTitle(title);
+    return goal;
+  }
+
 }
