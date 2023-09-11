@@ -19,9 +19,7 @@ pipeline {
         stage ('Static analysis') {
             steps {
                 withSonarQubeEnv('Local') {
-                    withGradle {
-                        sh 'gradle sonarqube'
-                    }
+                    sh './gradlew sonar'
                 }
             }
         }
