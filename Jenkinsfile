@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage ('Build') {
             steps {
-               sh './gradlew bootWar --exclude-task test'
+                sh './gradlew bootWar --exclude-task test'
             }
         }
         stage ('Test') {
@@ -15,7 +15,9 @@ pipeline {
         stage ('Static analysis') {
             steps {
                 withSonarQubeEnv('Local') {
-                    sh './gradlew sonar'
+                    withGradle {
+                        sh './gradlew sonar'
+                    }
                 }
             }
         }
