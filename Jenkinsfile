@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        gradle 'Gradle-7.6.2'
+    }
+
     stages {
         stage ('Build') {
             steps {
