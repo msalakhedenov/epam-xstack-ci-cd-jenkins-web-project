@@ -12,8 +12,7 @@ pipeline {
                 sh './gradlew jacocoTestReport'
                 sh 'ls -l'
                 sh 'ls -l build'
-                sh 'ls -l build/jacoco'
-                sh 'ls -l build/reports/jacoco/test/html'
+                sh 'ls -l build/reports'
 
                 withSonarQubeEnv('Local') {
                     sh './gradlew sonar'
