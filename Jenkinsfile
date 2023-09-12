@@ -15,6 +15,15 @@ pipeline {
                     sh './gradlew sonar'
                 }
             }
+            post {
+                success {
+                    jacoco(
+                        execPattern: '**/build/jacoco/*.exec',
+                        classPattern: '**/build/classes/java/main',
+                        sourcePattern: '**/src/main'
+                    )
+                }
+            }
         }
         stage ('Quality gate') {
             steps {
