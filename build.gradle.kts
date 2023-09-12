@@ -17,7 +17,7 @@ java {
 sonar {
   properties {
     property("sonar.projectKey", "EPAM-XStack-CI-CD-with-Jenkins")
-    property("sonar.coverage.jacoco.xmlReportPaths", "build/jacoco/*.exec")
+    property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/*.xml")
   }
 }
 
@@ -49,4 +49,10 @@ dependencies {
 
 tasks.test {
   useJUnitPlatform()
+}
+
+tasks.jacocoTestReport {
+  reports {
+    xml.required.set(true)
+  }
 }
