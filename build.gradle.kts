@@ -4,6 +4,7 @@ plugins {
   id("org.springframework.boot") version "3.1.3"
   id("io.spring.dependency-management") version "1.1.3"
   id("org.sonarqube") version "3.5.0.2730"
+  id("jacoco")
 }
 
 group = "com.sm"
@@ -16,7 +17,12 @@ java {
 sonar {
   properties {
     property("sonar.projectKey", "EPAM-XStack-CI-CD-with-Jenkins")
+    property("sonar.coverage.jacoco.xmlReportPaths", "build/jacoco/*.exec")
   }
+}
+
+jacoco {
+  toolVersion = "0.8.10"
 }
 
 repositories {

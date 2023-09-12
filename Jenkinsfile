@@ -6,21 +6,24 @@ pipeline {
     }
 
     stages {
-        stage ('Build') {
+        stage ('Build & Analysis') {
             steps {
-                sh './gradlew bootWar --exclude-task test'
+                sh './gradlew build --exclude-task test'
+                sh './gradlew jacocoTestReport'
+
+                withSonarQubeEnv('Local') {
+                    sh './gradlew sonar'
+                }
+            }
+        }
+        stage ('Quality gate') {
+            steps {
+                waitForQualityGate abortPipeline: true
             }
         }
         stage ('Test') {
             steps {
                 sh './gradlew test'
-            }
-        }
-        stage ('Static analysis') {
-            steps {
-                withSonarQubeEnv('Local') {
-                    sh './gradlew sonar'
-                }
             }
         }
         stage ('Deploy') {
