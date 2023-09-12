@@ -10,6 +10,10 @@ pipeline {
             steps {
                 sh './gradlew build --exclude-task test'
                 sh './gradlew jacocoTestReport'
+                sh 'ls -l'
+                sh 'ls -l build'
+                sh 'ls -l build/jacoco'
+                sh 'ls -l build/reports/jacoco/test/html'
 
                 withSonarQubeEnv('Local') {
                     sh './gradlew sonar'
